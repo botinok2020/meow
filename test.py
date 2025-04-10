@@ -10,7 +10,7 @@ from aiogram.filters.command import CommandStart, Command
 #bebe = datall()
 
 router = Router()
-bot = Bot(token='7858030157:AAEqohD-traSjCoVj1wxlgwv1MOy4lRDULU')
+bot = Bot(token='p0she1_naxu1')
 dp = Dispatcher()
 
 @dp.message(CommandStart())
