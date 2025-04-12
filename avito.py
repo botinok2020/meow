@@ -7,14 +7,21 @@ from bs4 import BeautifulSoup
 
 url = 'https://www.avito.ru/novosibirsk/kvartiry/sdam/na_dlitelnyy_srok'
 
-#response = requests.get(url)
-#print(response.status_code)
-#soup = BeautifulSoup(response.text, "html.parser")
-
 def datall() -> str:
     response = requests.get(url)
     print(response.status_code)
     soup = BeautifulSoup(response.text, "html.parser")
+
+    idu = []
+    id = []
+    lol = []
+
+    idu = soup.findAll('div', class_ = 'iva-item-root-Se7z4 photo-slider-slider-ZccM3 iva-item-gallery-nEww5 iva-item-redesign-H4ow9 iva-item-responsive-GCo6h iva-item-xl-QXiZ1 items-item-kllqq items-galleryItem-o_Et0 js-catalog-item-enum')
+    for data in idu:
+        if data.find('div', itemprop = 'id') is not None:
+            id.append(data.text)
+
+    lol = soup.find_all('div')
 
     nameu = []
     name = []
@@ -38,6 +45,12 @@ def datall() -> str:
     ssylkau = soup.findAll('a', class_ = 'styles-module-root-m3BML styles-module-root_noVisited-HHF0s')
     for link in ssylkau:
         ssylka.append(link.get('href'))
+
+    print(len(id))
+    print(idu)
+    # print(str(id[0]))
+    # print(str(id[1]))
+    # print(str(id[2]))
     print(name[0])
     print(name[1])
     print(name[2])
